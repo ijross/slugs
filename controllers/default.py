@@ -5,7 +5,8 @@ import logging
 
 
 
-@auth.requires_login()
+
+
 def index():
     """
     This is the main page of the wiki.  
@@ -70,12 +71,10 @@ def index():
                     page_id = db.pagetable.insert(title=title)
                     db.revision.insert(pageref=page_id, body=form.vars.body,
                                        date_created = datetime.now(),
-                                       user_id = auth.user_id,
                                        change_notes=form.vars.comment)
                 else: 
                      db.revision.insert(pageref=row.id,body=form.vars.body,
                                        date_created = datetime.now(),
-                                      user_id= auth.user_id,
                                       change_notes=form.vars.comment)
 
                 redirect(URL('default','index', args=[title]))
@@ -84,7 +83,7 @@ def index():
         elif revising:
            start_idx = 1
            form = SQLFORM.grid(db.revision.pageref == row.id, args=request.args[:start_idx], details = False, deletable= False, editable=False, 
-                 fields=[db.revision.user_id,db.revision.date_created,db.revision.change_notes])
+                 fields=[db.revision.editor,db.revision.date_created,db.revision.change_notes])
            content = form
 
         else:

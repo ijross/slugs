@@ -6,6 +6,12 @@ import unittest
 # Format for wiki links.
 RE_LINKS = re.compile('(<<)(.*?)(>>)')
 
+def get_name():
+   name = str(request.client)
+   if auth.user:
+      name = auth.user.first_name
+   return name 
+
 db.define_table('pagetable',
    		Field('title'),
    		 )
@@ -16,7 +22,7 @@ db.define_table('revision',
 		Field('body', 'text'), # This is the main content of a revision.
 		Field('title'),
                 Field('date_created', 'datetime'),
-                Field('user_id', db.auth_user),
+                Field('editor', 'text', default = get_name()),
                 Field('change_notes', 'text')
 		 )
 
