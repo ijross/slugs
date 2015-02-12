@@ -1,0 +1,39 @@
+
+New revision stored as new entry into table
+	This is to roll back changes if a mistake is made 
+
+need page table and revision table
+
+if page is there show page
+	if not, ask user to create a page
+
+page table needs ID and title
+
+reviion table contains
+	id, title,
+
+looking for entry
+	first go through page table and fetch ID of that title 
+
+	r = db(db.pagetable.title == title).select().first()
+
+index
+
+	if request.args(0) 
+  		title = request.args(0)
+		#check pagetable for entry of title 
+		if exists:
+			fetch record from revision table with latest entry of title
+			revision.page_id == (id of pagetable.title==title))
+
+                does not exist and ask the user if they want to create it
+			redirect to new page with args(0) they want and edit = true
+
+request.vars.edit='y'
+
+editing = true if request.vars.edit='y' else false
+
+if editing is true 
+	create an edit sqlform.factory item where youll take input of content from the user 
+
+ 

@@ -1,0 +1,34 @@
+{{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
+{{extend 'layout.html'}}
+
+{{block head}}
+<!-- This hides the "content" label of the form. -->
+<style>
+label#no_table_body__label { display: none; }
+</style>
+{{end}}
+
+<h1>{{=display_title}}</h1>
+
+{{if editing:}}
+{{=content}}
+{{elif revising:}}
+{{=content}}
+{{else:}}
+{{=represent_wiki(content)}}
+{{pass}}
+
+<p>
+{{if button:}}
+{{=button}}
+{{pass}}
+</p>
+
+<p>
+{{if rev_button:}}
+{{=rev_button}}
+{{pass}}
+</p>
+
+<!-- You need to put here buttons to see the revision history (to implement later),
+and to edit (to implement now). -->
