@@ -718,3 +718,37 @@ success!
 success!
 success!
 success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+timestamp: 2015-02-11T20:43:00.788733
+ALTER TABLE revision ADD change_notes TEXT;
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!

@@ -17,6 +17,7 @@ db.define_table('revision',
 		Field('title'),
                 Field('date_created', 'datetime'),
                 Field('user_id', db.auth_user),
+                Field('change_notes', 'text')
 		 )
 
 db.define_table('testpage',
